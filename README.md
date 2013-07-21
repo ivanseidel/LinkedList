@@ -54,7 +54,7 @@ myList.add(myObject);
 
 // add(index, obj) method will try to insert the object at the specified index
 myList.add(0, myObject); // Add at the beginning
-myList.add(3, myObject); // Add on the index 3
+myList.add(3, myObject); // Add at index 3
 
 // unshift(obj) method will insert the object at the beginning
 myList.unshift(myObject);
@@ -64,6 +64,7 @@ myList.unshift(myObject);
 
 ```c++
 // get(index) will return the element at index
+// (notice that the start element is 0, not 1)
 
 // Get the FIRST element
 myObject = myList.get(0);
@@ -78,7 +79,6 @@ myObject = myList.get(myList.size() - 1);
 #### Changing elements
 ```c++
 // set(index, obj) method will change the object at index to obj
-// (notice that the start element is 0, not 1)
 
 // Change the first element to myObject
 myList.set(0, myObject);
@@ -118,7 +118,7 @@ myList.clear();
 
 - `T` `ListNode::data` - The object data
 
-- `ListNode<class T>` `*next` - Pointer to the next Node
+- `ListNode<T>` `*next` - Pointer to the next Node
 
 ### `LinkedList` class
 
