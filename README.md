@@ -2,7 +2,7 @@
 
 This library was developed targeting **`Arduino`** applications. However, works just great with any C++.
 
-Implementing a buffer for objects takes time. If we are not in the mood, we just create an array[1000] with enough size.
+Implementing a buffer for objects takes time. If we are not in the mood, we just create an `array[1000]` with enough size.
 
 The objective of this library is to create a pattern for projects. If you need, in ANY case to use a List of: `int`, `float`, `objects`, `Lists` or `Wales`. **This is what you are looking for.**
 
@@ -110,140 +110,51 @@ myDeletedObject = myList.shift();
 myList.clear();
 ```
 
-
-============================
-
-### `GaussianAverage` class
-
-This class provides a simple but really powerfull filter called [Moving Average](https://en.wikipedia.org/wiki/Moving_average).
-
-It's an average of the last `n` values, but using `Gaussians` to incorporate the power of uncertainty.
-
-You can also use it as a simple `Moving Average` by setting the `variance` to a fixed value, or just not
-setting it (The default value when a Gaussian is created is really High, and is a constant).
-
-Also, `GaussianAverage` class EXTENDS from `Gaussian`. Instead of calculating only the average (mean), you have access
-to the variance as well.
-
-**ATTENTION: This class REQUIRES [LinkedList class](https://github.com/ivanseidel/LinkedList) as well. It MUST be included BEFORE `GaussianAverage`.**
-```c++
-#include <LinkedList.h>
-#include <GaussianAverage.h>
-```
-
-#### To declare a `GaussianAverage` object
-
-```c++
-// The default number of samples is 4
-GaussianAverage myAverage = GaussianAverage();
-
-// If you want to change it pass to constructor
-// 30 samples will be stored
-GaussianAverage myAverage = GaussianAverage(30);
-
-// The same as above
-GaussianAverage myAverage(30);
-```
-
-Now that we have our class instantiated, let's proceed to add Values (or Gaussians) to it.
-
-There are two main ways to add values to the `Average`. Using the `sum(Gaussian)` method, or `+=` overloaded operator.
-
-#### To add values to the Moving Average just use the operator `+=`
-```c++
-// Add it through the add method
-myAverage.add(Gaussian(32,20));
-myAverage.add(myGaussian);
-
-// Add it with the overloaded operator +=
-myAverage += Gaussian(32, 20);
-myAverage += myGaussian;
-
-// You can also add an double/integer to it
-// (note that the Variance will be always the same, and very HIGH)
-myAverage += 32;
-myAverage += 70;
-```
-
-Ok, we have created and added... What is missing? Yes, Process.
-
-The process of calculating the average is not done every time you add something new (you migth want
-to add three samples before calculating). So, to calculate it you can use the method `process()`.
-
-Once you have processed, the values of the `mean` and `variance` will be stored inside the object.
-Note that `process` method returns the `self` object.
-
-To minimize the CPU usage, we have implemented a cache detector. If you use the method `process` more
-than once before adding something new, the new average will not be calculated.
-
-#### Process the new Average
-```c++
-// This will run the calculation and store the result inside the myAverage object
-// (remember that it's also a Gaussian!)
-myAverage.process();
-
-// Or perhaps, you want to save it
-mySavedAverage = myAverage.process();
-
-// Or you want to process, change it, and then save
-myAverage.process();
-myAverage.vary(30).move(10);
-
-mySavedAverage = myAverage;
-```
-
 ------------------------
 
 ## Library Reference
 
-### `Gaussian` class
+### `ListNode` struct
 
-- `double` `Gaussian::mean` - Mean of the Gaussian.
+- `T` `ListNode::data` - The object data
 
-- `double` `Gaussian::variance` - Variance of the Gaussian.
+- `ListNode<class T>` `*next` - Pointer to the next Node
 
-- `Gaussian::Gaussian(double _mean = 0.0, double _variance = MAX_VARIANCE)` - Constructor.
+### `LinkedList` class
 
-- `Gaussian` `Gaussian::setMean(double _val)` - Set the mean to _val.
+**`boolean` methods returns if succeeded**
 
-- `Gaussian` `Gaussian::move(double _val)` - Adds _val to the mean.
+- `LinkedList<T>::LinkedList()` - Constructor.
 
-- `Gaussian` `Gaussian::setVariance(double _val)` - Set the variance to _val.
+- `LinkedList<T>::~LinkedList()` - Destructor. Clear Nodes to minimize memory.
 
-- `Gaussian` `Gaussian::vary(double _val)` - Adds _val to the variance.
+- `int` `LinkedList<T>::size()` - Returns the current size of the list.
 
-- `void` `Gaussian::operator=(Gaussian _gaus)` - Copies the mean and variance to current object.
+- `bool` `LinkedList<T>::add(T)` - Add element T at the END of the list.
 
-- `Gaussian` `Gaussian::operator+(Gaussian _gaus)` - Sum gaussians and returns the new Gaussian.
+- `bool` `LinkedList<T>::add(int index, T)` - Add element T at `index` of the list.
 
-- `void` `Gaussian::operator+=(Gaussian _gaus)` - Sum gaussians and saves it to itself.
+- `bool` `LinkedList<T>::unshift(T)` - Add element T at the BEGINNING of the list.
 
-- **protected** `Gaussian` `sum(double _mean, double _variance)` - Return the sum of itself with _mean and _variance.
+- `bool` `LinkedList<T>::set(int index, T)` - Set the element at `index` to T.
 
-=======================
+- `T` `LinkedList<T>::remove(int index)` - Remove element at `index`. Return the removed element.
 
-### `GaussianAverage` class
+- `T` `LinkedList<T>::pop()` - Remove the LAST element. Return the removed element.
 
-- `GaussianAverage::GaussianAverage(int _n = 4)` - Constructor. n = number of samples to hold.
+- `T` `LinkedList<T>::shift()` - Remove the FIRST element. Return the removed element.
 
-- `void` `GaussianAverage::add(Gaussian g)` - Add the Gaussian g to the LinkedList.
+- `T` `LinkedList<T>::get(int index)` - Return the element at `index`.
 
-- `void` `GaussianAverage::operator+=(Gaussian _gaus)` - Add the Gaussian _gaus to the LinkedList.
+- `void` `LinkedList<T>::clear()` - Removes all elements.
 
-- `void` `GaussianAverage::operator+=(double _mean)` - Add a new Gaussian with mean _mean to the LinkedList.
+- **protected** `int` `LinkedList<T>::_size` - Holds the cached size of the list.
 
-- `Gaussian` `GaussianAverage::process()` - Calculate the average Gaussian and returns it.
+- **protected** `ListNode<T>` `LinkedList<T>::*root` - Holds the root node of the list.
 
-- **proteced** `LinledList<Gaussian>` `GaussianAverage::*gaussians` - Pointer to linked list that will hold the latest Gaussians.
+- **protected** `ListNode<T>` `LinkedList<T>::*last` - Holds the last node of the list.
 
-- **proteced** `int` `GaussianAverage::n` - Number of samples to hold.
-
-- **proteced** `bool` `GaussianAverage::isCached` - Flag that indicates if a process() MUST be done.
-
-- **proteced** `Gaussian` `avg` - Only a temporary helper used by process().
-
-----------------------------
-
+- **protected** `ListNode<T>*` `LinkedList<T>::getNode(int index)` - Returns the `index` node of the list.
 
 ### Version History
 
