@@ -4,51 +4,70 @@ This library was developed targeting **`Arduino`** applications. However, works 
 
 Implementing a buffer for objects takes time. If we are not in the mood, we just create an array[1000] with enough size.
 
-The objective of this library is to create a pattern for projects. If you need, in ANY case to use a List of: `int`, `float`, `objects`, `Lists` or `Wales`. This is what you are looking for.
+The objective of this library is to create a pattern for projects. If you need, in ANY case to use a List of: `int`, `float`, `objects`, `Lists` or `Wales`. **This is what you are looking for.**
 
 ## Installation
 
-1. [Download](https://github.com/ivanseidel/Gaussian/releases) the Latest release from gitHub.
-2. Unzip and modify the Folder name to "Gaussian" (Remove the '-version')
+1. [Download](https://github.com/ivanseidel/LinkedList/releases) the Latest release from gitHub.
+2. Unzip and modify the Folder name to "LinkedList" (Remove the '-version')
 3. Paste the modified folder on your Library folder (On your `Libraries` folder inside Sketchbooks or Arduino software).
-4. Download and Install [LinkedList class](https://github.com/ivanseidel/LinkedList) as well, if you are going to use `GaussianAverage` class. 
 
 ## Getting started
 
-### `Gaussian` class
+**If you are here, because another Library requires this class, just don't waste time reading bellow. Install and ready.**
 
-A class that contains a `mean` and a `variance` attribute.
+-------------------------
 
-Also contains methods to do sums with others `Gaussians`.
+### The `LinkedList` class
 
-#### To declare a Gaussian object:
+In case you don't know what a LinkedList is and what it's used for, take a quick look at [Wikipedia::LinkedList](https://en.wikipedia.org/wiki/Linked_list) before continuing.
+
+#### To declare a LinkedList object
 ```c++
-// Simple Gaussian initialization and instantiation
-Gaussian myGaussian = Gaussian(mean, variance);
+// Instantiate a LinkedList that will hold 'integer'
+LinkedList<int> myLinkedList = LinkedList<int>();
 
-// This will declare a Gaussian with mean = 0 and variance = MAX_VARIANCE (A really big value)
-Gaussian myGaussian = Gaussian();
+// Or just this
+LinkedList<int> myLinkedList();
 
-// This will do the same as above
-Gaussian myGaussian();
-Gaussian myGaussian(0);
+// But if you are instantiating a pointer LinkedList...
+LinkedList<int> *myLinkedList = new LinkedList<int>();
+
+// If you want a LinkedList with any other type such as 'MyClass'
+LinkedList<MyClass> *myLinkedList = new LinkedList<MyClass>();
 ```
 
-Dealing with `mean` is very easy. You can either access it direcly (attribute `mean`),
-or change it with the methods `move` and `setMean`. Both methods returns the `self`
-Gaussian object, allowing you to do actions consecutively in one single line.
-
-#### Set, Change and get `mean` values
+#### Getting the size of the linked list
 ```c++
-// Set or Get the attribute direcly to the object
-myGaussian.mean = 10;
+// To get the size of a linked list, make use of the size() method
+int theSize = myList.size();
 
-// Increase the mean by `x`
-myGaussian.move(10);
-
-// Set to 10 and move by -10
-myGaussian.setMean(10).move(-10);
+// Notice that if it's pointer to the linked list, you should use -> instead
+int theSize = myList->size();
 ```
+
+#### Adding objects to the `LinkedList`
+
+```c++
+// add(obj) method will insert at the END of the list
+myList.add(myObject);
+
+// add(index, obj) method will try to insert the object at the specified index
+myList.add(0, myObject); // Add at the beginning
+myList.add(3, myObject); // Add on the index 3
+
+// unshift(obj) method will insert the object at the beginning
+myList.unshift(myObject);
+
+// set(index, obj) method will change the object at index to obj
+myList.set(0, myObject); // Change the first element to myObject
+myList.set
+
+
+```
+
+#### Removing objects from `LinkedList`
+
 
 When dealing with the `variance`, you can also do the same as the `mean`. Access it direcly from
 the object, or use the methods `vary` and `setVariance` to change the `variance`.
