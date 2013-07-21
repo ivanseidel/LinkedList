@@ -46,7 +46,7 @@ int theSize = myList.size();
 int theSize = myList->size();
 ```
 
-#### Adding objects to the `LinkedList`
+#### Adding elements
 
 ```c++
 // add(obj) method will insert at the END of the list
@@ -58,51 +58,58 @@ myList.add(3, myObject); // Add on the index 3
 
 // unshift(obj) method will insert the object at the beginning
 myList.unshift(myObject);
+```
 
+#### Getting elements
+
+```c++
+// get(index) will return the element at index
+
+// Get the FIRST element
+myObject = myList.get(0);
+
+// Get the third element
+myObject = myList.get(2);
+
+// Get the LAST element
+myObject = myList.get(myList.size() - 1);
+```
+
+#### Changing elements
+```c++
 // set(index, obj) method will change the object at index to obj
-myList.set(0, myObject); // Change the first element to myObject
-myList.set
+// (notice that the start element is 0, not 1)
 
+// Change the first element to myObject
+myList.set(0, myObject);
 
+// Change the third element to myObject
+myList.set(2, myObject);
+
+// Change the LAST element of the list
+myList.set(myList.size() - 1, myObject);
 ```
 
-#### Removing objects from `LinkedList`
-
-
-When dealing with the `variance`, you can also do the same as the `mean`. Access it direcly from
-the object, or use the methods `vary` and `setVariance` to change the `variance`.
-
-#### Set, Change and get `variance` values
+#### Removing elements
 ```c++
-// Set or Get the attribute direcly to the object
-myGaussian.variance = 4;
+// remove(index) will remove and return the element at index
 
-// Increase the variance by `y`
-myGaussian.vary(3);
+// Remove the first object
+myList.remove(0);
 
-// Set to 3 and then vary 10 more
-myGaussian.setVariance(3).vary(10);
+// Get and Delete the third element
+myDeletedObject = myList.remove(2);
+
+// pop() will remove and return the LAST element
+myDeletedObject = myList.pop();
+
+// shift() will remove and return the FIRST element
+myDeletedObject = myList.shift();
+
+// clear() will erase the entire list, leaving it with 0 elements
+myList.clear();
 ```
 
-Ok, now that we can change both `mean` and `variance`, we can now go to the next step: Summing Gaussians.
-
-It's already implemented all the math to do that, and it's nos so hard to understand it, after resuming
-sum of Gaussians to 'sum of pondered values'.
-
-The operators **+, +=, =** works just good with the class `Gaussian`.
-
-#### Sum, Set and do Math with Gaussians
-```c++
-Gaussian g1 = Gaussian(0, 10);
-Gaussian g2(10, 10);
-
-// Simply sum both of them (the + method is overloaded on the class)
-Gaussian result = g1 + g2;
-
-// Or do like this
-result = g1;
-result += g2;
-```
 
 ============================
 
