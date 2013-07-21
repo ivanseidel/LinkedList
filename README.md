@@ -160,4 +160,4 @@ myList.clear();
 
 * `1.0 (2013-07-20)`: Original release
 
-![LinkedList](https://d2weczhvl823v0.cloudfront.net/ivanseidel/LinkedList/trend.png)!
+![LinkedList](https://d2weczhvl823v0.cloudfront.net/ivanseidel/LinkedList/trend.png)
