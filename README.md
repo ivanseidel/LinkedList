@@ -12,11 +12,11 @@ The objective of this library is to create a pattern for projects. If you need t
 2. Unzip and modify the Folder name to "LinkedList" (Remove the '-version')
 3. Paste the modified folder on your Library folder (On your `Libraries` folder inside Sketchbooks or Arduino software).
 
-## Getting started
-
 **If you are here, because another Library requires this class, just don't waste time reading bellow. Install and ready.**
 
 -------------------------
+
+## Getting started
 
 ### The `LinkedList` class
 
