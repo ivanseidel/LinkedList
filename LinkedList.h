@@ -44,53 +44,53 @@ public:
 	/*
 		Returns current size of LinkedList
 	*/
-	int size();
+	virtual int size();
 	/*
 		Adds a T object in the specified index;
 		Unlink and link the LinkedList correcly;
 		Increment _size
 	*/
-	bool add(int index, T);
+	virtual bool add(int index, T);
 	/*
 		Adds a T object in the end of the LinkedList;
 		Increment _size;
 	*/
-	bool add(T);
+	virtual bool add(T);
 	/*
 		Adds a T object in the start of the LinkedList;
 		Increment _size;
 	*/
-	bool unshift(T);
+	virtual bool unshift(T);
 	/*
 		Set the object at index, with T;
 		Increment _size;
 	*/
-	bool set(int index, T);
+	virtual bool set(int index, T);
 	/*
 		Remove object at index;
 		If index is not reachable, returns false;
 		else, decrement _size
 	*/
-	T remove(int index);
+	virtual T remove(int index);
 	/*
 		Remove last object;
 	*/
-	T pop();
+	virtual T pop();
 	/*
 		Remove first object;
 	*/
-	T shift();
+	virtual T shift();
 	/*
 		Get the index'th element on the list;
 		Return Element if accessible,
 		else, return false;
 	*/
-	T get(int index, bool useCached);
+	virtual T get(int index, bool useCached);
 
 	/*
 		Clear the entire array
 	*/
-	void clear();
+	virtual void clear();
 
 };
 
@@ -190,6 +190,7 @@ bool LinkedList<T>::add(T _t){
 	ListNode<T> *tmp = new ListNode<T>();
 	tmp->data = _t;
 	tmp->next = false;
+	
 	if(root){
 		// Already have elements inserted
 		last->next = tmp;
