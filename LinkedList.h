@@ -101,6 +101,10 @@ LinkedList<T>::LinkedList()
 	root=false;
 	last=false;
 	_size=0;
+
+	lastNodeGot = root;
+	lastIndexGot = 0;
+	isCached = false;
 }
 
 // Clear Nodes and free Memory
@@ -131,7 +135,7 @@ ListNode<T>* LinkedList<T>::getNode(int index){
 
 	// Check if the node trying to get is
 	// immediatly AFTER the previous got one
-	if(isCached && lastIndexGot == index - 1){
+	if(isCached && lastIndexGot <= index){
 		_pos = lastIndexGot;
 		current = lastNodeGot;
 	}
@@ -299,15 +303,6 @@ T LinkedList<T>::remove(int index){
 template<typename T>
 T LinkedList<T>::get(int index, bool useCached = false){
 	ListNode<T> *tmp = getNode(index);
-
-	/*if(useCached && index == lastIndexGot + 1){
-		tmp = tmp->next;
-	}else{
-		tmp = getNode(index);
-	}*/
-
-	// lastIndexGot = index;
-	// lastNodeGot = tmp;
 
 	return (tmp ? tmp->data : false);
 }
