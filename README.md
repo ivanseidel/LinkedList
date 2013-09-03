@@ -4,7 +4,12 @@ This library was developed targeting **`Arduino`** applications. However, works 
 
 Implementing a buffer for objects takes time. If we are not in the mood, we just create an `array[1000]` with enough size.
 
-The objective of this library is to create a pattern for projects. If you need to use a List of: `int`, `float`, `objects`, `Lists` or `Wales`. **This is what you are looking for.**
+The objective of this library is to create a pattern for projects. If you need to use a List of: `int`, `float`, `objects`, `Lists` or `Wales`. **This is what you are looking for.**Implementing a buffer for objects takes time. If we are not in the mood, we just create an array[1000] with enough size. Memory management and objects instantiation is tricky...
+
+The objective of this library is to create a generic class, that can be used with others libraries and projects.
+If you need, in ANY case to use a List of: `int`, `float`, `objects`, `Lists` or `Wales`. **This is what you are looking for.** Just download, install and ready.
+
+With a simple but powerful caching algorithm, you can get subsequent objects much faster than usual. Tested without any problems with Lists bigger than 2000 members.
 
 ## Installation
 
