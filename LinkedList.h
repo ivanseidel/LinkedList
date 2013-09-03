@@ -28,8 +28,12 @@ protected:
 	ListNode<T> *root;
 	ListNode<T>	*last;
 
+	// Helps "get" method, by saving last position
 	ListNode<T> *lastNodeGot;
 	int lastIndexGot;
+	// isCached should be set to FALSE
+	// everytime the list suffer changes
+	bool isCached;
 
 	ListNode<T>* getNode(int index);
 
@@ -112,6 +116,7 @@ LinkedList<T>::~LinkedList()
 	}
 	last = false;
 	_size=0;
+	isCached = false;
 }
 
 /*
@@ -151,6 +156,8 @@ bool LinkedList<T>::add(int index, T _t){
 	_prev->next = tmp;
 
 	_size++;
+	isCached = false;
+
 	return true;
 }
 
@@ -171,6 +178,8 @@ bool LinkedList<T>::add(T _t){
 	}
 
 	_size++;
+	isCached = false;
+
 	return true;
 }
 
@@ -185,6 +194,8 @@ bool LinkedList<T>::unshift(T _t){
 	tmp->data = _t;
 	
 	_size++;
+	isCached = false;
+	
 	return true;
 }
 
@@ -202,6 +213,8 @@ template<typename T>
 T LinkedList<T>::pop(){
 	if(_size <= 0)
 		return false;
+	
+	isCached = false;
 
 	if(_size >= 2){
 		ListNode<T> *tmp = getNode(_size - 2);
@@ -233,6 +246,8 @@ T LinkedList<T>::shift(){
 		delete(root);
 		root = _next;
 		_size --;
+		isCached = false;
+
 		return ret;
 	}else{
 		// Only one left, then pop()
@@ -257,7 +272,9 @@ T LinkedList<T>::remove(int index){
 	tmp->next = tmp->next->next;
 	delete(toDelete);
 	_size--;
-	
+	isCached = false;
+
+	return false;
 }
 
 template<typename T>
