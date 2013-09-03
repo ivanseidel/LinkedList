@@ -125,14 +125,33 @@ LinkedList<T>::~LinkedList()
 
 template<typename T>
 ListNode<T>* LinkedList<T>::getNode(int index){
+
 	int _pos = 0;
 	ListNode<T>* current = root;
+
+	// Check if the node trying to get is
+	// immediatly AFTER the previous got one
+	if(isCached && lastIndexGot == index - 1){
+		_pos = lastIndexGot;
+		current = lastNodeGot;
+	}
+
 	while(_pos < index && current){
 		current = current->next;
 
 		_pos++;
 	}
-	return current;
+
+	// Check if the object index got is the same as the required
+	if(_pos == index){
+		isCached = true;
+		lastIndexGot = index;
+		lastNodeGot = current;
+
+		return current;
+	}
+
+	return false;
 }
 
 template<typename T>
