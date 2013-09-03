@@ -158,6 +158,7 @@ myList.clear();
 
 ### Version History
 
+* `1.1 (2013-07-20)`: Cache implemented. Getting subsequent objects is now O(N). Before, O(N^2).
 * `1.0 (2013-07-20)`: Original release
 
 ![LinkedList](https://d2weczhvl823v0.cloudfront.net/ivanseidel/LinkedList/trend.png)
