@@ -31,7 +31,7 @@ In case you don't know what a LinkedList is and what it's used for, take a quick
 LinkedList<int> myLinkedList = LinkedList<int>();
 
 // Or just this
-LinkedList<int> myLinkedList();
+LinkedList<int> myLinkedList;
 
 // But if you are instantiating a pointer LinkedList...
 LinkedList<int> *myLinkedList = new LinkedList<int>();
