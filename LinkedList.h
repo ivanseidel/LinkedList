@@ -236,7 +236,7 @@ bool LinkedList<T>::set(int index, T _t){
 template<typename T>
 T LinkedList<T>::pop(){
 	if(_size <= 0)
-		return false;
+		return T();
 	
 	isCached = false;
 
@@ -262,7 +262,7 @@ T LinkedList<T>::pop(){
 template<typename T>
 T LinkedList<T>::shift(){
 	if(_size <= 0)
-		return false;
+		return T();
 
 	if(_size > 1){
 		ListNode<T> *_next = root->next;
@@ -283,7 +283,7 @@ T LinkedList<T>::shift(){
 template<typename T>
 T LinkedList<T>::remove(int index){
 	if(index < 0 || index >= _size)
-		return false;
+		return T();
 
 	if(index == 0)
 		return shift();
@@ -298,14 +298,14 @@ T LinkedList<T>::remove(int index){
 	_size--;
 	isCached = false;
 
-	return false;
+	return T();
 }
 
 template<typename T>
 T LinkedList<T>::get(int index, bool useCached = false){
 	ListNode<T> *tmp = getNode(index);
 
-	return (tmp ? tmp->data : false);
+	return (tmp ? tmp->data : T());
 }
 
 template<typename T>
