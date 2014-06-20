@@ -169,7 +169,7 @@ bool LinkedList<T>::add(int index, T _t){
 	// if(index == 0)
 	// 	return shift(_t);
 
-	if(index > _size)
+	if(index >= _size)
 		return add(_t);
 
 	ListNode<T> *tmp = new ListNode<T>(),
