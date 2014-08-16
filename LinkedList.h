@@ -216,6 +216,7 @@ bool LinkedList<T>::unshift(T _t){
 	ListNode<T> *tmp = new ListNode<T>();
 	tmp->next = root;
 	tmp->data = _t;
+	root = tmp;
 	
 	_size++;
 	isCached = false;
