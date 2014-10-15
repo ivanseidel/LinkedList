@@ -110,6 +110,8 @@ myDeletedObject = myList.pop();
 myDeletedObject = myList.shift();
 
 // clear() will erase the entire list, leaving it with 0 elements
+// NOTE: Clear wont DELETE/FREE memory from Pointers, if you 
+// are using Classes/Poiners, manualy delete and free those.
 myList.clear();
 ```
 
@@ -129,7 +131,7 @@ myList.clear();
 
 - `LinkedList<T>::LinkedList()` - Constructor.
 
-- `LinkedList<T>::~LinkedList()` - Destructor. Clear Nodes to minimize memory.
+- `LinkedList<T>::~LinkedList()` - Destructor. Clear Nodes to minimize memory. Does not free pointer memory.
 
 - `int` `LinkedList<T>::size()` - Returns the current size of the list.
 
@@ -149,7 +151,7 @@ myList.clear();
 
 - `T` `LinkedList<T>::get(int index)` - Return the element at `index`.
 
-- `void` `LinkedList<T>::clear()` - Removes all elements.
+- `void` `LinkedList<T>::clear()` - Removes all elements. Does not free pointer memory.
 
 - **protected** `int` `LinkedList<T>::_size` - Holds the cached size of the list.
 
