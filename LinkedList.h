@@ -283,24 +283,29 @@ T LinkedList<T>::shift(){
 
 template<typename T>
 T LinkedList<T>::remove(int index){
-	if(index < 0 || index >= _size)
+	if (index < 0 || index >= _size)
+	{
 		return T();
+	}
 
 	if(index == 0)
 		return shift();
-
-	if(index - 1 == _size)
+	
+	if (index == _size-1)
+	{
 		return pop();
+	}
 
 	ListNode<T> *tmp = getNode(index - 1);
 	ListNode<T> *toDelete = tmp->next;
+	T ret = toDelete->data;
 	tmp->next = tmp->next->next;
 	delete(toDelete);
 	_size--;
 	isCached = false;
-
-	return T();
+	return ret;
 }
+
 
 template<typename T>
 T LinkedList<T>::get(int index, bool useCached = false){
