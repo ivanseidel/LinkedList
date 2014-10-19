@@ -11,7 +11,7 @@ With a simple but powerful caching algorithm, you can get subsequent objects muc
 
 ## Installation
 
-1. [Download](https://github.com/ivanseidel/LinkedList/releases) the Latest release from gitHub.
+1. [Download](https://github.com/ivanseidel/LinkedList/archive/master.zip) the Latest release from gitHub.
 2. Unzip and modify the Folder name to "LinkedList" (Remove the '-version')
 3. Paste the modified folder on your Library folder (On your `Libraries` folder inside Sketchbooks or Arduino software).
 
