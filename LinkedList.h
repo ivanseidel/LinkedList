@@ -85,7 +85,7 @@ public:
 		Return Element if accessible,
 		else, return false;
 	*/
-	virtual T get(int index, bool useCached);
+	virtual T get(int index);
 
 	/*
 		Clear the entire array
@@ -308,7 +308,7 @@ T LinkedList<T>::remove(int index){
 
 
 template<typename T>
-T LinkedList<T>::get(int index, bool useCached = false){
+T LinkedList<T>::get(int index){
 	ListNode<T> *tmp = getNode(index);
 
 	return (tmp ? tmp->data : T());
