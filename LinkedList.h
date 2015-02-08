@@ -166,11 +166,11 @@ int LinkedList<T>::size(){
 template<typename T>
 bool LinkedList<T>::add(int index, T _t){
 
-	// if(index == 0)
-	// 	return shift(_t);
-
 	if(index >= _size)
 		return add(_t);
+
+	if(index == 0)
+		return unshift(_t);
 
 	ListNode<T> *tmp = new ListNode<T>(),
 				 *_prev = getNode(index-1);
