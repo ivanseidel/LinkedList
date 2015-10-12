@@ -5,7 +5,7 @@ This library was developed targeting **`Arduino`** applications. However, works 
 Implementing a buffer for objects takes time. If we are not in the mood, we just create an `array[1000]` with enough size.
 
 The objective of this library is to create a pattern for projects.
-If you need to use a List of: `int`, `float`, `objects`, `Lists` or `Wales`. **This is what you are looking for.** 
+If you need to use a List of: `int`, `float`, `objects`, `Lists` or `Wales`. **This is what you are looking for.**
 
 With a simple but powerful caching algorithm, you can get subsequent objects much faster than usual. Tested without any problems with Lists bigger than 2000 members.
 
@@ -38,6 +38,7 @@ LinkedList<int> myLinkedList;
 LinkedList<int> *myLinkedList = new LinkedList<int>();
 
 // If you want a LinkedList with any other type such as 'MyClass'
+// Make sure you call delete(MyClass) when you remove!
 LinkedList<MyClass> *myLinkedList = new LinkedList<MyClass>();
 ```
 
@@ -111,7 +112,7 @@ myDeletedObject = myList.pop();
 myDeletedObject = myList.shift();
 
 // clear() will erase the entire list, leaving it with 0 elements
-// NOTE: Clear wont DELETE/FREE memory from Pointers, if you 
+// NOTE: Clear wont DELETE/FREE memory from Pointers, if you
 // are using Classes/Poiners, manualy delete and free those.
 myList.clear();
 ```
@@ -144,7 +145,7 @@ myList.clear();
 
 - `bool` `LinkedList<T>::set(int index, T)` - Set the element at `index` to T.
 
-- `T` `LinkedList<T>::remove(int index)` - Remove element at `index`. Return the removed element.
+- `T` `LinkedList<T>::remove(int index)` - Remove element at `index`. Return the removed element. Does not free pointer memory
 
 - `T` `LinkedList<T>::pop()` - Remove the LAST element. Return the removed element.
 
