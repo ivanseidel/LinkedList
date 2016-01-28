@@ -1,11 +1,13 @@
 /*
-	LinkedList.h - V1.1 - Generic LinkedList implementation
+	LinkedList.h - V1.2 - Generic LinkedList implementation
 	Works better with FIFO, because LIFO will need to
 	search the entire List to find the last one;
 
 	For instructions, go to https://github.com/ivanseidel/LinkedList
 
 	Created by Ivan Seidel Gomes, March, 2013.
+	Modified by Tyler Glenn Dec, 2015.
+		- Changes to include indexing and const functs.
 	Released into the public domain.
 */
 
@@ -36,6 +38,7 @@ protected:
 	bool isCached;
 
 	ListNode<T>* getNode(int index);
+	ListNode<T>* getNode(int index) const;
 
 public:
 	LinkedList();
@@ -44,7 +47,7 @@ public:
 	/*
 		Returns current size of LinkedList
 	*/
-	virtual int size();
+	virtual int size()const;
 	/*
 		Adds a T object in the specified index;
 		Unlink and link the LinkedList correcly;
@@ -86,11 +89,18 @@ public:
 		else, return false;
 	*/
 	virtual T get(int index);
+	virtual T get(int index) const;
 
 	/*
 		Clear the entire array
 	*/
 	virtual void clear();
+
+	/*
+		Include indexing operators
+	*/
+	virtual T& operator[](size_t i)       			{ return getNode(i)->data; }
+	const virtual T& operator[](size_t i) const { return getNode(i)->data; }
 
 };
 
@@ -98,8 +108,8 @@ public:
 template<typename T>
 LinkedList<T>::LinkedList()
 {
-	root=false;
-	last=false;
+	root=NULL;
+	last=NULL;
 	_size=0;
 
 	lastNodeGot = root;
@@ -112,15 +122,15 @@ template<typename T>
 LinkedList<T>::~LinkedList()
 {
 	ListNode<T>* tmp;
-	while(root!=false)
+	while(root!=NULL)
 	{
 		tmp=root;
 		root=root->next;
 		delete tmp;
 	}
-	last = false;
+	last = NULL;
 	_size=0;
-	isCached = false;
+	isCached = NULL;
 }
 
 /*
@@ -159,7 +169,34 @@ ListNode<T>* LinkedList<T>::getNode(int index){
 }
 
 template<typename T>
-int LinkedList<T>::size(){
+ListNode<T>* LinkedList<T>::getNode(int index) const{
+
+	int _pos = 0;
+	ListNode<T>* current = root;
+
+	// Check if the node trying to get is
+	// immediatly AFTER the previous got one
+	if(isCached && lastIndexGot <= index){
+		_pos = lastIndexGot;
+		current = lastNodeGot;
+	}
+
+	while(_pos < index && current){
+		current = current->next;
+
+		_pos++;
+	}
+
+	// Check if the object index got is the same as the required
+	if(_pos == index){
+		return current;
+	}
+
+	return false;
+}
+
+template<typename T>
+int LinkedList<T>::size()const{
 	return _size;
 }
 
@@ -189,8 +226,8 @@ bool LinkedList<T>::add(T _t){
 
 	ListNode<T> *tmp = new ListNode<T>();
 	tmp->data = _t;
-	tmp->next = false;
-	
+	tmp->next = NULL;
+
 	if(root){
 		// Already have elements inserted
 		last->next = tmp;
@@ -217,10 +254,10 @@ bool LinkedList<T>::unshift(T _t){
 	tmp->next = root;
 	tmp->data = _t;
 	root = tmp;
-	
+
 	_size++;
 	isCached = false;
-	
+
 	return true;
 }
 
@@ -238,14 +275,14 @@ template<typename T>
 T LinkedList<T>::pop(){
 	if(_size <= 0)
 		return T();
-	
+
 	isCached = false;
 
 	if(_size >= 2){
 		ListNode<T> *tmp = getNode(_size - 2);
 		T ret = tmp->next->data;
 		delete(tmp->next);
-		tmp->next = false;
+		tmp->next = NULL;
 		last = tmp;
 		_size--;
 		return ret;
@@ -253,8 +290,8 @@ T LinkedList<T>::pop(){
 		// Only one element left on the list
 		T ret = root->data;
 		delete(root);
-		root = false;
-		last = false;
+		root = NULL;
+		last = NULL;
 		_size = 0;
 		return ret;
 	}
@@ -290,7 +327,7 @@ T LinkedList<T>::remove(int index){
 
 	if(index == 0)
 		return shift();
-	
+
 	if (index == _size-1)
 	{
 		return pop();
@@ -305,10 +342,15 @@ T LinkedList<T>::remove(int index){
 	isCached = false;
 	return ret;
 }
-
-
 template<typename T>
 T LinkedList<T>::get(int index){
+	ListNode<T> *tmp = getNode(index);
+
+	return (tmp ? tmp->data : T());
+}
+
+template<typename T>
+T LinkedList<T>::get(int index) const{
 	ListNode<T> *tmp = getNode(index);
 
 	return (tmp ? tmp->data : T());
