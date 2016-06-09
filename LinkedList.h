@@ -13,6 +13,8 @@
 #ifndef LinkedList_h
 #define LinkedList_h
 
+#include <stddef.h>
+
 template<class T>
 struct ListNode
 {
