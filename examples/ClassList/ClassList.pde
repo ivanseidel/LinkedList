@@ -76,4 +76,6 @@ void loop() {
 		}
 	}
 	Serial.println(".");
+
+	while (true); // nothing else to do, loop forever
 }

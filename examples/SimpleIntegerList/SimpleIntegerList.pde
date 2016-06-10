@@ -51,6 +51,8 @@ void loop() {
 			Serial.print(val);
 		}
 	}
+
+	while (true); // nothing else to do, loop forever
 }
 
 
