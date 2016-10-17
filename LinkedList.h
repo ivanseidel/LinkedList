@@ -37,16 +37,17 @@ protected:
 	// everytime the list suffer changes
 	bool isCached;
 
-	ListNode<T>* getNode(int index);
+    ListNode<T>* getNode(int index);
 
 public:
 	LinkedList();
+    LinkedList(const LinkedList<T> &rhs);
 	~LinkedList();
 
 	/*
 		Returns current size of LinkedList
 	*/
-	virtual int size();
+    virtual int size() const;
 	/*
 		Adds a T object in the specified index;
 		Unlink and link the LinkedList correcly;
@@ -57,7 +58,7 @@ public:
 		Adds a T object in the end of the LinkedList;
 		Increment _size;
 	*/
-	virtual bool add(T);
+    virtual bool add(T&);
 	/*
 		Adds a T object in the start of the LinkedList;
 		Increment _size;
@@ -87,26 +88,30 @@ public:
 		Return Element if accessible,
 		else, return false;
 	*/
-	virtual T get(int index);
+    virtual T get(int index);
 
 	/*
 		Clear the entire array
 	*/
 	virtual void clear();
 
+    virtual LinkedList<T> & operator =(const LinkedList<T> &rhs);
+
+    //virtual operator LinkedList<T>();
+
 };
 
 // Initialize LinkedList with false values
 template<typename T>
-LinkedList<T>::LinkedList()
+LinkedList<T>::LinkedList() : root(NULL), last(NULL), _size(0), lastNodeGot(NULL), lastIndexGot(0), isCached(false)
 {
-	root=NULL;
-	last=NULL;
-	_size=0;
 
-	lastNodeGot = root;
-	lastIndexGot = 0;
-	isCached = false;
+}
+
+template<typename T>
+LinkedList<T>::LinkedList(const LinkedList<T> &rhs) : LinkedList()
+{
+    *this = rhs;
 }
 
 // Clear Nodes and free Memory
@@ -161,7 +166,7 @@ ListNode<T>* LinkedList<T>::getNode(int index){
 }
 
 template<typename T>
-int LinkedList<T>::size(){
+int LinkedList<T>::size() const{
 	return _size;
 }
 
@@ -187,7 +192,7 @@ bool LinkedList<T>::add(int index, T _t){
 }
 
 template<typename T>
-bool LinkedList<T>::add(T _t){
+bool LinkedList<T>::add(T& _t){
 
 	ListNode<T> *tmp = new ListNode<T>();
 	tmp->data = _t;
@@ -245,7 +250,7 @@ T LinkedList<T>::pop(){
 
 	if(_size >= 2){
 		ListNode<T> *tmp = getNode(_size - 2);
-		T ret = tmp->next->data;
+        T ret = tmp->next->data;
 		delete(tmp->next);
 		tmp->next = NULL;
 		last = tmp;
@@ -253,7 +258,7 @@ T LinkedList<T>::pop(){
 		return ret;
 	}else{
 		// Only one element left on the list
-		T ret = root->data;
+        T ret = root->data;
 		delete(root);
 		root = NULL;
 		last = NULL;
@@ -320,6 +325,24 @@ template<typename T>
 void LinkedList<T>::clear(){
 	while(size() > 0)
 		shift();
+}
+
+template<typename T>
+LinkedList<T>& LinkedList<T>::operator =(const LinkedList<T>& rhs) {
+
+    clear();
+
+    ListNode<T> * x = rhs.root;
+    // copy
+    for(int i=0; i < rhs.size(); i++)
+    {
+        T tmp = T(x->data);
+
+        add(tmp);
+        x = x->next;
+    }
+
+    return *this;
 }
 
 #endif
