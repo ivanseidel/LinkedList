@@ -344,6 +344,7 @@ void LinkedList<T>::sort(int (*cmp)(T &, T &)){
 			if(!a_end->next	) {
 				if(joinPoint == &root) {
 					last = a_end;
+					isCached = false;
 					return;
 				}
 				else {
