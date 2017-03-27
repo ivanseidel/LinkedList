@@ -101,10 +101,10 @@ public:
 	*/
 	virtual void sort(int (*cmp)(T &, T &));
 
-		//add support to array brakets [] operator
-	T& operator[](int index); 
-	T& operator[](size_t& i) { return this->get(i); }
-  	const T& operator[](const size_t& i) const { return this->get(i); }
+		// add support to array brakets [] operator
+	inline T& operator[](int index); 
+	inline T& operator[](size_t& i) { return this->get(i); }
+  	inline const T& operator[](const size_t& i) const { return this->get(i); }
 
 };
 
