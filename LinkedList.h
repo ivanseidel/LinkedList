@@ -101,6 +101,11 @@ public:
 	*/
 	virtual void sort(int (*cmp)(T &, T &));
 
+		//add support to array brakets [] operator
+	T& operator[](int index); 
+	T& operator[](size_t& i) { return this->get(i); }
+  	const T& operator[](const size_t& i) const { return this->get(i); }
+
 };
 
 // Initialize LinkedList with false values
@@ -231,6 +236,14 @@ bool LinkedList<T>::unshift(T _t){
 	isCached = false;
 	
 	return true;
+}
+
+
+template<typename T>
+T& LinkedList<T>::operator[](int index) {
+	if(index < 0 || index >= _size)
+		return;
+	return getNode(index)->data;
 }
 
 template<typename T>
