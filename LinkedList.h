@@ -43,6 +43,7 @@ protected:
 
 public:
 	LinkedList();
+	LinkedList(int sizeIndex, T _t); //initiate list size and default value
 	~LinkedList();
 
 	/*
@@ -175,6 +176,13 @@ ListNode<T>* LinkedList<T>::getNode(int index){
 template<typename T>
 int LinkedList<T>::size(){
 	return _size;
+}
+
+template<typename T>
+LinkedList<T>::LinkedList(int sizeIndex, T _t){
+	for (int i = 0; i < sizeIndex; i++){
+		add(_t);
+	}
 }
 
 template<typename T>
