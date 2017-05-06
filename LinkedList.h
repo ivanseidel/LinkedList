@@ -249,8 +249,6 @@ bool LinkedList<T>::unshift(T _t){
 
 template<typename T>
 T& LinkedList<T>::operator[](int index) {
-	if(index < 0 || index >= _size)
-		return;
 	return getNode(index)->data;
 }
 
