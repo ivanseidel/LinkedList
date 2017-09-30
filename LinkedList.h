@@ -224,7 +224,6 @@ bool LinkedList<T>::unshift(T _t){
 
 	ListNode<T> *tmp = new ListNode<T>();
 	tmp->next = root;
-	root->prev = tmp;
 	tmp->data = _t;
 	root = tmp;
 	
