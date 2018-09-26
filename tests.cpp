@@ -6,13 +6,19 @@
 
 void GivenNothingInList_WhenSizeCalled_Returns0()
 {
+    //Arrange
     LinkedList<int> list = LinkedList<int>();
+
+    //Act Assert
     assert(list.size() == 0);
 }
 
 void GivenNothingInList_WhenAddNodeAtPlace0_ReturnsTrue()
 {
+    //Arrange
     LinkedList<int> list = LinkedList<int>();
+
+    //Act Assert
     assert(list.add(0, 1) == true);
 }
 
@@ -46,35 +52,49 @@ void GivenThreeNodesInList_WhenSizeCalled_Returns3()
 
 void GivenNothingInList_WhenUnshiftCalled_ThenListSize1()
 {
+    //Arrange
     LinkedList<int> list = LinkedList<int>();
+
+    //Act
     list.unshift(1);
 
+    //Assert
     assert(list.size() == 1);
 }
 
 void GivenOneNodeInList_WhenUnshiftCalled_ThenListSize2()
 {
+    //Arrange
     LinkedList<int> list = LinkedList<int>();
     list.add(1);
+
+    //Act
     list.unshift(2);
 
+    //Assert
     assert(list.size() == 2);
 }
 
 void GivenOneNodeInList_WhenUnshiftCalled_ThenExistingNodeLast()
 {
+    //Arrange
     LinkedList<int> list = LinkedList<int>();
     list.add(1);
+
+    //Act
     list.unshift(2);
 
+    //Assert
     assert(list.get(0) == 2);
     assert(list.get(1) == 1);
 }
 
 void GivenNothingInList_WhenSetIsCalled_ThenReturnsFalse()
 {
+    //Arrange
     LinkedList<int> list = LinkedList<int>();
 
+    //Act Assert
     assert(list.set(-1, 1) == false);
     assert(list.set(0, 1) == false);
     assert(list.set(1, 1) == false);
@@ -82,13 +102,16 @@ void GivenNothingInList_WhenSetIsCalled_ThenReturnsFalse()
 
 void GivenThreeNodesInList_WhenSetIsCalledAtPlace1_ThenSecondNodeIsSet()
 {
+    //Arrange
     LinkedList<int> list = LinkedList<int>();
     list.add(0);
     list.add(1);
     list.add(2);
 
+    //Act 
     list.set(1, 10);
 
+    //Assert
     assert(list.get(0) == 0);
     assert(list.get(1) == 10);
     assert(list.get(2) == 2);
@@ -96,25 +119,32 @@ void GivenThreeNodesInList_WhenSetIsCalledAtPlace1_ThenSecondNodeIsSet()
 
 void GivenNothingInList_WhenPopIsCalled_ThenReturnsFalse()
 {
+    //Arrange
     LinkedList<int> list = LinkedList<int>();
+
+    //Act Assert
     assert(list.pop() == false);
 }
 
 void GivenTwoNodesInList_WhenPopIsCalled_ThenReturnsLastNode()
 {
+    //Arrange
     LinkedList<int> list = LinkedList<int>();
     list.add(0);
     list.add(1);
 
+    //Act Assert
     assert(list.pop() == 1);
 }
 
 void GivenTwoNodesInList_WhenPopIsCalled_ThenListIsShorter()
 {
+    //Arrange
     LinkedList<int> list = LinkedList<int>();
     list.add(0);
     list.add(1);
 
+    //Act Assert
     assert(list.size() == 2);
     list.pop();
     assert(list.size() == 1);
@@ -122,23 +152,30 @@ void GivenTwoNodesInList_WhenPopIsCalled_ThenListIsShorter()
 
 void GivenNothingInList_WhenShiftIsCalled_ThenReturnsFalse()
 {
+    //Arrange
     LinkedList<int> list = LinkedList<int>();
+
+    //Act Assert
     assert(list.shift() == false);
 }
 
 void GivenOneNodeInList_WhenShiftIsCalled_ThenReturnsData()
 {
+    //Arrange
     LinkedList<int> list = LinkedList<int>();
     list.add(5);
 
+    //Act Assert
     assert(list.shift() == 5);
 }
 
 void GivenOneNodeInList_WhenShiftIsCalled_ThenListEmpty()
 {
+    //Arrange
     LinkedList<int> list = LinkedList<int>();
     list.add(5);
 
+    //Act Assert
     assert(list.size() == 1);
     list.shift();
     assert(list.size() == 0);
@@ -146,21 +183,25 @@ void GivenOneNodeInList_WhenShiftIsCalled_ThenListEmpty()
 
 void GivenThreeNodesInList_WhenShiftIsCalled_ThenReturnsFirstData()
 {
+    //Arrange
     LinkedList<int> list = LinkedList<int>();
     list.add(0);
     list.add(1);
     list.add(2);
 
+    //Act Assert
     assert(list.shift() == 0);
 }
 
 void GivenThreeNodesInList_WhenShiftIsCalled_ThenListIsShorter()
 {
+    //Arrange
     LinkedList<int> list = LinkedList<int>();
     list.add(0);
     list.add(1);
     list.add(2);
 
+    //Act Assert
     assert(list.size() == 3);
     list.shift();
     assert(list.size() == 2);
@@ -168,38 +209,46 @@ void GivenThreeNodesInList_WhenShiftIsCalled_ThenListIsShorter()
 
 void GivenNothingInList_WhenRemoveIsCalled_ThenFalseIsReturned()
 {
+    //Arrange
     LinkedList<int> list = LinkedList<int>();
 
+    //Act Assert
     assert(list.remove(0) == false);
 }
 
 void GivenThreeNodesInList_WhenRemoveIsCalledAtPlace0_ThenFirstNodeDataIsReturned()
 {
+    //Arrange
     LinkedList<int> list = LinkedList<int>();
     list.add(0);
     list.add(1);
     list.add(2);
 
+    //Act Assert
     assert(list.remove(0) == 0);
 }
 
 void GivenThreeNodesInList_WhenRemoveIsCalledAtPlace2_ThenLastNodeDataIsReturned()
 {
+    //Arrange
     LinkedList<int> list = LinkedList<int>();
     list.add(0);
     list.add(1);
     list.add(2);
 
+    //Act Assert
     assert(list.remove(2) == 2);
 }
 
 void GivenThreeNodesInList_WhenRemoveIsCalled_ThenListIsShorter()
 {
+    //Arrange
     LinkedList<int> list = LinkedList<int>();
     list.add(0);
     list.add(1);
     list.add(2);
 
+    //Act Assert
     assert(list.size() == 3);
     list.remove(1);
     assert(list.size() == 2);
@@ -207,25 +256,31 @@ void GivenThreeNodesInList_WhenRemoveIsCalled_ThenListIsShorter()
 
 void GivenNothingInList_WhenGetIsCalled_ThenReturnsFalse()
 {
+    //Arrange
     LinkedList<int> list = LinkedList<int>();
 
+    //Act Assert
     assert(list.get(0) == false);
 }
 
 void GivenThreeNodesInList_WhenGetIsCalled_ThenReturnsData()
 {
+    //Arrange
     LinkedList<int> list = LinkedList<int>();
     list.add(0);
     list.add(1);
     list.add(2);
 
+    //Act Assert
     assert(list.get(1) == 1);
 }
 
 void GivenNothingInList_WhenClearIsCalled_ThenSizeUnchanged()
 {
+    //Arrange
     LinkedList<int> list = LinkedList<int>();
 
+    //Act Assert
     assert(list.size() == 0);
     list.clear();
     assert(list.size() == 0);
@@ -233,13 +288,16 @@ void GivenNothingInList_WhenClearIsCalled_ThenSizeUnchanged()
 
 void GivenThreeInList_WhenClearIsCalled_ThenListEmpty()
 {
+    //Arrange
     LinkedList<int> list = LinkedList<int>();
     list.add(0);
     list.add(1);
     list.add(2);
 
+    //Act
     list.clear();
 
+    //Assert
     assert(list.size() == 0);
 }
 
