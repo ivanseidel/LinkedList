@@ -67,7 +67,6 @@ public:
 	virtual bool unshift(T);
 	/*
 		Set the object at index, with T;
-		Increment _size;
 	*/
 	virtual bool set(int index, T);
 	/*
