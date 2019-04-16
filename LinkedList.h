@@ -43,6 +43,7 @@ protected:
 
 public:
 	LinkedList();
+	LinkedList(int sizeIndex, T _t); //initiate list size and default value
 	~LinkedList();
 
 	/*
@@ -99,6 +100,11 @@ public:
 		Sort the list, given a comparison function
 	*/
 	virtual void sort(int (*cmp)(T &, T &));
+
+		// add support to array brakets [] operator
+	inline T& operator[](int index); 
+	inline T& operator[](size_t& i) { return this->get(i); }
+  	inline const T& operator[](const size_t& i) const { return this->get(i); }
 
 };
 
@@ -172,6 +178,13 @@ int LinkedList<T>::size(){
 }
 
 template<typename T>
+LinkedList<T>::LinkedList(int sizeIndex, T _t){
+	for (int i = 0; i < sizeIndex; i++){
+		add(_t);
+	}
+}
+
+template<typename T>
 bool LinkedList<T>::add(int index, T _t){
 
 	if(index >= _size)
@@ -230,6 +243,12 @@ bool LinkedList<T>::unshift(T _t){
 	isCached = false;
 	
 	return true;
+}
+
+
+template<typename T>
+T& LinkedList<T>::operator[](int index) {
+	return getNode(index)->data;
 }
 
 template<typename T>
