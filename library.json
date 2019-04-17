@@ -8,5 +8,10 @@
         "url": "https://github.com/ivanseidel/LinkedList.git"
     },
     "frameworks": "arduino",
-    "platforms": "*"
+    "platforms": "*",
+    "build": {
+        "srcFilter": [
+            "+<LinkedList.h>"
+        ]
+    }
 }
