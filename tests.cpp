@@ -1,8 +1,6 @@
 //g++ -std=c++14 tests.cpp -o tests && ./tests
-
+#include<bits/stdc++.h>
 #include "LinkedList.h"
-#include <assert.h> 
-#include <iostream>
 
 void GivenNothingInList_WhenSizeCalled_Returns0()
 {
