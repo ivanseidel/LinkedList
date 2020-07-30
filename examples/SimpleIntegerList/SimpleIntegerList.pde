@@ -1,5 +1,5 @@
 /*
-	LinkedList Example
+	TrueLinkedList Example
 	Link: http://github.com/ivanseidel/LinkedList
 
 	Example Created by
@@ -8,9 +8,9 @@
 	Edited by:
 		Ivan Seidel, github.com/ivanseidel
 */
-#include <LinkedList.h>
+#include <TrueLinkedList.h>
 
-LinkedList<int> myList = LinkedList<int>();
+TrueLinkedList<int> myList = TrueLinkedList<int>();
 
 void setup()
 {

@@ -1,5 +1,5 @@
 /*
-	LinkedList Example
+	TrueLinkedList Example
 	Link: http://github.com/ivanseidel/LinkedList
 
 	Example Created by
@@ -9,7 +9,7 @@
 		Ivan Seidel, github.com/ivanseidel
 */
 
-#include <LinkedList.h>
+#include <TrueLinkedList.h>
 
 // Let's define a new class
 class Animal {
@@ -22,7 +22,7 @@ char  catname[]="kitty";
 char  dogname[]="doggie";
 char  emuname[]="emu";
 
-LinkedList<Animal*> myAnimalList = LinkedList<Animal*>();
+TrueLinkedList<Animal*> myAnimalList = TrueLinkedList<Animal*>();
 
 void setup()
 {

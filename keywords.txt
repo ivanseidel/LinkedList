@@ -6,7 +6,7 @@
 # Datatypes (KEYWORD1)
 #######################################
 
-LinkedList	KEYWORD1
+TrueLinkedList	KEYWORD1
 ListNode	KEYWORD1
 
 #######################################
