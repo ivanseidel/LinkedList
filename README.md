@@ -1,4 +1,4 @@
-# LinkedList
+# TrueLinkedList
 
 This library was developed targeting **`Arduino`** applications. However, works just great with any C++.
 
@@ -11,8 +11,8 @@ With a simple but powerful caching algorithm, you can get subsequent objects muc
 
 ## Installation
 
-1. [Download](https://github.com/ivanseidel/LinkedList/archive/master.zip) the Latest release from gitHub.
-2. Unzip and modify the Folder name to "LinkedList" (Remove the '-version')
+1. [Download](https://github.com/ivanseidel/TrueLinkedList/archive/master.zip) the Latest release from gitHub.
+2. Unzip and modify the Folder name to "TrueLinkedList" (Remove the '-version')
 3. Paste the modified folder on your Library folder (On your `Libraries` folder inside Sketchbooks or Arduino software).
 4. Reopen the Arduino software.
 
@@ -26,24 +26,24 @@ With a simple but powerful caching algorithm, you can get subsequent objects muc
 
 ## Getting started
 
-### The `LinkedList` class
+### The `TrueLinkedList` class
 
-In case you don't know what a LinkedList is and what it's used for, take a quick look at [Wikipedia::LinkedList](https://en.wikipedia.org/wiki/Linked_list) before continuing.
+In case you don't know what a TrueLinkedList is and what it's used for, take a quick look at [Wikipedia::TrueLinkedList](https://en.wikipedia.org/wiki/Linked_list) before continuing.
 
-#### To declare a LinkedList object
+#### To declare a TrueLinkedList object
 ```c++
-// Instantiate a LinkedList that will hold 'integer'
-LinkedList<int> myLinkedList = LinkedList<int>();
+// Instantiate a TrueLinkedList that will hold 'integer'
+TrueLinkedList<int> myTrueLinkedList = TrueLinkedList<int>();
 
 // Or just this
-LinkedList<int> myLinkedList;
+TrueLinkedList<int> myTrueLinkedList;
 
-// But if you are instantiating a pointer LinkedList...
-LinkedList<int> *myLinkedList = new LinkedList<int>();
+// But if you are instantiating a pointer TrueLinkedList...
+TrueLinkedList<int> *myTrueLinkedList = new TrueLinkedList<int>();
 
-// If you want a LinkedList with any other type such as 'MyClass'
+// If you want a TrueLinkedList with any other type such as 'MyClass'
 // Make sure you call delete(MyClass) when you remove!
-LinkedList<MyClass> *myLinkedList = new LinkedList<MyClass>();
+TrueLinkedList<MyClass> *myTrueLinkedList = new TrueLinkedList<MyClass>();
 ```
 
 #### Getting the size of the linked list
@@ -137,47 +137,47 @@ myList.sort(myComparator);
 
 - `ListNode<T>` `*next` - Pointer to the next Node
 
-### `LinkedList` class
+### `TrueLinkedList` class
 
 **`boolean` methods returns if succeeded**
 
-- `LinkedList<T>::LinkedList()` - Constructor.
+- `TrueLinkedList<T>::TrueLinkedList()` - Constructor.
 
-- `LinkedList<T>::~LinkedList()` - Destructor. Clear Nodes to minimize memory. Does not free pointer memory.
+- `TrueLinkedList<T>::~TrueLinkedList()` - Destructor. Clear Nodes to minimize memory. Does not free pointer memory.
 
-- `int` `LinkedList<T>::size()` - Returns the current size of the list.
+- `int` `TrueLinkedList<T>::size()` - Returns the current size of the list.
 
-- `bool` `LinkedList<T>::add(T)` - Add element T at the END of the list.
+- `bool` `TrueLinkedList<T>::add(T)` - Add element T at the END of the list.
 
-- `bool` `LinkedList<T>::add(int index, T)` - Add element T at `index` of the list.
+- `bool` `TrueLinkedList<T>::add(int index, T)` - Add element T at `index` of the list.
 
-- `bool` `LinkedList<T>::unshift(T)` - Add element T at the BEGINNING of the list.
+- `bool` `TrueLinkedList<T>::unshift(T)` - Add element T at the BEGINNING of the list.
 
-- `bool` `LinkedList<T>::set(int index, T)` - Set the element at `index` to T.
+- `bool` `TrueLinkedList<T>::set(int index, T)` - Set the element at `index` to T.
 
-- `T` `LinkedList<T>::remove(int index)` - Remove element at `index`. Return the removed element. Does not free pointer memory
+- `T` `TrueLinkedList<T>::remove(int index)` - Remove element at `index`. Return the removed element. Does not free pointer memory
 
-- `T` `LinkedList<T>::pop()` - Remove the LAST element. Return the removed element.
+- `T` `TrueLinkedList<T>::pop()` - Remove the LAST element. Return the removed element.
 
-- `T` `LinkedList<T>::shift()` - Remove the FIRST element. Return the removed element.
+- `T` `TrueLinkedList<T>::shift()` - Remove the FIRST element. Return the removed element.
 
-- `T` `LinkedList<T>::get(int index)` - Return the element at `index`.
+- `T` `TrueLinkedList<T>::get(int index)` - Return the element at `index`.
 
-- `void` `LinkedList<T>::clear()` - Removes all elements. Does not free pointer memory.
+- `void` `TrueLinkedList<T>::clear()` - Removes all elements. Does not free pointer memory.
 
-- `void` `LinkedList<T>::sort(int (*cmp)(T &, T &))` - Sorts the linked list according to a comparator funcrion. The comparator should return < 0 if the first argument should be sorted before the second, and > 0 if the first argument should be sorted after the first element. (Same as how `strcmp()` works.)
+- `void` `TrueLinkedList<T>::sort(int (*cmp)(T &, T &))` - Sorts the linked list according to a comparator funcrion. The comparator should return < 0 if the first argument should be sorted before the second, and > 0 if the first argument should be sorted after the first element. (Same as how `strcmp()` works.)
 
-- **protected** `int` `LinkedList<T>::_size` - Holds the cached size of the list.
+- **protected** `int` `TrueLinkedList<T>::_size` - Holds the cached size of the list.
 
-- **protected** `ListNode<T>` `LinkedList<T>::*root` - Holds the root node of the list.
+- **protected** `ListNode<T>` `TrueLinkedList<T>::*root` - Holds the root node of the list.
 
-- **protected** `ListNode<T>` `LinkedList<T>::*last` - Holds the last node of the list.
+- **protected** `ListNode<T>` `TrueLinkedList<T>::*last` - Holds the last node of the list.
 
-- **protected** `ListNode<T>*` `LinkedList<T>::getNode(int index)` - Returns the `index` node of the list.
+- **protected** `ListNode<T>*` `TrueLinkedList<T>::getNode(int index)` - Returns the `index` node of the list.
 
 ### Version History
 
 * `1.1 (2013-07-20)`: Cache implemented. Getting subsequent objects is now O(N). Before, O(N^2).
 * `1.0 (2013-07-20)`: Original release
 
-![LinkedList](https://d2weczhvl823v0.cloudfront.net/ivanseidel/LinkedList/trend.png)
+![TrueLinkedList](https://d2weczhvl823v0.cloudfront.net/ivanseidel/TrueLinkedList/trend.png)

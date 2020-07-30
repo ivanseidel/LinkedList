@@ -1,13 +1,13 @@
 //g++ -std=c++14 tests.cpp -o tests && ./tests
 
-#include "LinkedList.h"
+#include "TrueLinkedList.h"
 #include <assert.h> 
 #include <iostream>
 
 void GivenNothingInList_WhenSizeCalled_Returns0()
 {
     //Arrange
-    LinkedList<int> list = LinkedList<int>();
+    TrueLinkedList<int> list = TrueLinkedList<int>();
 
     //Act Assert
     assert(list.size() == 0);
@@ -16,7 +16,7 @@ void GivenNothingInList_WhenSizeCalled_Returns0()
 void GivenNothingInList_WhenAddNodeAtPlace0_ReturnsTrue()
 {
     //Arrange
-    LinkedList<int> list = LinkedList<int>();
+    TrueLinkedList<int> list = TrueLinkedList<int>();
 
     //Act Assert
     assert(list.add(0, 1) == true);
@@ -25,7 +25,7 @@ void GivenNothingInList_WhenAddNodeAtPlace0_ReturnsTrue()
 void GivenOneNodeInList_WhenAddNodeIndexLargerThanListSize_ThenNodeAddedToEndOfList()
 {
     //Arrange
-    LinkedList<int> list = LinkedList<int>();
+    TrueLinkedList<int> list = TrueLinkedList<int>();
     list.add(1);
 
     //Act
@@ -41,7 +41,7 @@ void GivenOneNodeInList_WhenAddNodeIndexLargerThanListSize_ThenNodeAddedToEndOfL
 void GivenThreeNodesInList_WhenSizeCalled_Returns3()
 {
     //Arrange
-    LinkedList<int> list = LinkedList<int>();
+    TrueLinkedList<int> list = TrueLinkedList<int>();
     list.add(1);
     list.add(2);
     list.add(3);
@@ -53,7 +53,7 @@ void GivenThreeNodesInList_WhenSizeCalled_Returns3()
 void GivenNothingInList_WhenUnshiftCalled_ThenListSize1()
 {
     //Arrange
-    LinkedList<int> list = LinkedList<int>();
+    TrueLinkedList<int> list = TrueLinkedList<int>();
 
     //Act
     list.unshift(1);
@@ -65,7 +65,7 @@ void GivenNothingInList_WhenUnshiftCalled_ThenListSize1()
 void GivenOneNodeInList_WhenUnshiftCalled_ThenListSize2()
 {
     //Arrange
-    LinkedList<int> list = LinkedList<int>();
+    TrueLinkedList<int> list = TrueLinkedList<int>();
     list.add(1);
 
     //Act
@@ -78,7 +78,7 @@ void GivenOneNodeInList_WhenUnshiftCalled_ThenListSize2()
 void GivenOneNodeInList_WhenUnshiftCalled_ThenExistingNodeLast()
 {
     //Arrange
-    LinkedList<int> list = LinkedList<int>();
+    TrueLinkedList<int> list = TrueLinkedList<int>();
     list.add(1);
 
     //Act
@@ -92,7 +92,7 @@ void GivenOneNodeInList_WhenUnshiftCalled_ThenExistingNodeLast()
 void GivenNothingInList_WhenSetIsCalled_ThenReturnsFalse()
 {
     //Arrange
-    LinkedList<int> list = LinkedList<int>();
+    TrueLinkedList<int> list = TrueLinkedList<int>();
 
     //Act Assert
     assert(list.set(-1, 1) == false);
@@ -103,7 +103,7 @@ void GivenNothingInList_WhenSetIsCalled_ThenReturnsFalse()
 void GivenThreeNodesInList_WhenSetIsCalledAtPlace1_ThenSecondNodeIsSet()
 {
     //Arrange
-    LinkedList<int> list = LinkedList<int>();
+    TrueLinkedList<int> list = TrueLinkedList<int>();
     list.add(0);
     list.add(1);
     list.add(2);
@@ -120,7 +120,7 @@ void GivenThreeNodesInList_WhenSetIsCalledAtPlace1_ThenSecondNodeIsSet()
 void GivenNothingInList_WhenPopIsCalled_ThenReturnsFalse()
 {
     //Arrange
-    LinkedList<int> list = LinkedList<int>();
+    TrueLinkedList<int> list = TrueLinkedList<int>();
 
     //Act Assert
     assert(list.pop() == false);
@@ -129,7 +129,7 @@ void GivenNothingInList_WhenPopIsCalled_ThenReturnsFalse()
 void GivenTwoNodesInList_WhenPopIsCalled_ThenReturnsLastNode()
 {
     //Arrange
-    LinkedList<int> list = LinkedList<int>();
+    TrueLinkedList<int> list = TrueLinkedList<int>();
     list.add(0);
     list.add(1);
 
@@ -140,7 +140,7 @@ void GivenTwoNodesInList_WhenPopIsCalled_ThenReturnsLastNode()
 void GivenTwoNodesInList_WhenPopIsCalled_ThenListIsShorter()
 {
     //Arrange
-    LinkedList<int> list = LinkedList<int>();
+    TrueLinkedList<int> list = TrueLinkedList<int>();
     list.add(0);
     list.add(1);
 
@@ -153,7 +153,7 @@ void GivenTwoNodesInList_WhenPopIsCalled_ThenListIsShorter()
 void GivenNothingInList_WhenShiftIsCalled_ThenReturnsFalse()
 {
     //Arrange
-    LinkedList<int> list = LinkedList<int>();
+    TrueLinkedList<int> list = TrueLinkedList<int>();
 
     //Act Assert
     assert(list.shift() == false);
@@ -162,7 +162,7 @@ void GivenNothingInList_WhenShiftIsCalled_ThenReturnsFalse()
 void GivenOneNodeInList_WhenShiftIsCalled_ThenReturnsData()
 {
     //Arrange
-    LinkedList<int> list = LinkedList<int>();
+    TrueLinkedList<int> list = TrueLinkedList<int>();
     list.add(5);
 
     //Act Assert
@@ -172,7 +172,7 @@ void GivenOneNodeInList_WhenShiftIsCalled_ThenReturnsData()
 void GivenOneNodeInList_WhenShiftIsCalled_ThenListEmpty()
 {
     //Arrange
-    LinkedList<int> list = LinkedList<int>();
+    TrueLinkedList<int> list = TrueLinkedList<int>();
     list.add(5);
 
     //Act Assert
@@ -184,7 +184,7 @@ void GivenOneNodeInList_WhenShiftIsCalled_ThenListEmpty()
 void GivenThreeNodesInList_WhenShiftIsCalled_ThenReturnsFirstData()
 {
     //Arrange
-    LinkedList<int> list = LinkedList<int>();
+    TrueLinkedList<int> list = TrueLinkedList<int>();
     list.add(0);
     list.add(1);
     list.add(2);
@@ -196,7 +196,7 @@ void GivenThreeNodesInList_WhenShiftIsCalled_ThenReturnsFirstData()
 void GivenThreeNodesInList_WhenShiftIsCalled_ThenListIsShorter()
 {
     //Arrange
-    LinkedList<int> list = LinkedList<int>();
+    TrueLinkedList<int> list = TrueLinkedList<int>();
     list.add(0);
     list.add(1);
     list.add(2);
@@ -210,7 +210,7 @@ void GivenThreeNodesInList_WhenShiftIsCalled_ThenListIsShorter()
 void GivenNothingInList_WhenRemoveIsCalled_ThenFalseIsReturned()
 {
     //Arrange
-    LinkedList<int> list = LinkedList<int>();
+    TrueLinkedList<int> list = TrueLinkedList<int>();
 
     //Act Assert
     assert(list.remove(0) == false);
@@ -219,7 +219,7 @@ void GivenNothingInList_WhenRemoveIsCalled_ThenFalseIsReturned()
 void GivenThreeNodesInList_WhenRemoveIsCalledAtPlace0_ThenFirstNodeDataIsReturned()
 {
     //Arrange
-    LinkedList<int> list = LinkedList<int>();
+    TrueLinkedList<int> list = TrueLinkedList<int>();
     list.add(0);
     list.add(1);
     list.add(2);
@@ -231,7 +231,7 @@ void GivenThreeNodesInList_WhenRemoveIsCalledAtPlace0_ThenFirstNodeDataIsReturne
 void GivenThreeNodesInList_WhenRemoveIsCalledAtPlace2_ThenLastNodeDataIsReturned()
 {
     //Arrange
-    LinkedList<int> list = LinkedList<int>();
+    TrueLinkedList<int> list = TrueLinkedList<int>();
     list.add(0);
     list.add(1);
     list.add(2);
@@ -243,7 +243,7 @@ void GivenThreeNodesInList_WhenRemoveIsCalledAtPlace2_ThenLastNodeDataIsReturned
 void GivenThreeNodesInList_WhenRemoveIsCalled_ThenListIsShorter()
 {
     //Arrange
-    LinkedList<int> list = LinkedList<int>();
+    TrueLinkedList<int> list = TrueLinkedList<int>();
     list.add(0);
     list.add(1);
     list.add(2);
@@ -257,7 +257,7 @@ void GivenThreeNodesInList_WhenRemoveIsCalled_ThenListIsShorter()
 void GivenNothingInList_WhenGetIsCalled_ThenReturnsFalse()
 {
     //Arrange
-    LinkedList<int> list = LinkedList<int>();
+    TrueLinkedList<int> list = TrueLinkedList<int>();
 
     //Act Assert
     assert(list.get(0) == false);
@@ -266,7 +266,7 @@ void GivenNothingInList_WhenGetIsCalled_ThenReturnsFalse()
 void GivenThreeNodesInList_WhenGetIsCalled_ThenReturnsData()
 {
     //Arrange
-    LinkedList<int> list = LinkedList<int>();
+    TrueLinkedList<int> list = TrueLinkedList<int>();
     list.add(0);
     list.add(1);
     list.add(2);
@@ -278,7 +278,7 @@ void GivenThreeNodesInList_WhenGetIsCalled_ThenReturnsData()
 void GivenNothingInList_WhenClearIsCalled_ThenSizeUnchanged()
 {
     //Arrange
-    LinkedList<int> list = LinkedList<int>();
+    TrueLinkedList<int> list = TrueLinkedList<int>();
 
     //Act Assert
     assert(list.size() == 0);
@@ -289,7 +289,7 @@ void GivenNothingInList_WhenClearIsCalled_ThenSizeUnchanged()
 void GivenThreeInList_WhenClearIsCalled_ThenListEmpty()
 {
     //Arrange
-    LinkedList<int> list = LinkedList<int>();
+    TrueLinkedList<int> list = TrueLinkedList<int>();
     list.add(0);
     list.add(1);
     list.add(2);

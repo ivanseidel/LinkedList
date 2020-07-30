@@ -1,5 +1,5 @@
 /*
-	LinkedList Example
+	TrueLinkedList Example
 	Link: http://github.com/PaulMurrayCbr/LinkedList
 	Forked from: http://github.com/ivanseidel/LinkedList
 
@@ -7,7 +7,7 @@
 		Paul Murray, github.com/PaulMurrayCbr
 */
 
-#include <LinkedList.h>
+#include <TrueLinkedList.h>
 
 char testString[] = "Lorem ipsum dolor sit amet, \
 consectetur adipiscing elit, sed do eiusmod tempor \
@@ -19,7 +19,7 @@ esse cillum dolore eu fugiat nulla pariatur. Excepteur \
 sint occaecat cupidatat non proident, sunt in culpa qui \
 officia deserunt mollit anim id est laborum.";
 
-LinkedList<char *> list;
+TrueLinkedList<char *> list;
 
 void setup() {
   Serial.begin(9600);
