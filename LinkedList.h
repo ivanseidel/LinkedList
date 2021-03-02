@@ -44,7 +44,7 @@ protected:
 public:
 	LinkedList();
 	LinkedList(int sizeIndex, T _t); //initiate list size and default value
-	~LinkedList();
+	virtual ~LinkedList();
 
 	/*
 		Returns current size of LinkedList
