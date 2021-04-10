@@ -99,7 +99,7 @@ myList.set(2, myObject);
 myList.set(myList.size() - 1, myObject);
 ```
 
-#### Removing elements
+#### Deleting elements
 ```c++
 // remove(index) will remove and return the element at index
 
