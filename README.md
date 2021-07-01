@@ -20,7 +20,7 @@ With a simple but powerful caching algorithm, you can get subsequent objects muc
 
 ## Tests
 
-`cd` to this directory and run `g++ -std=c++14 tests.cpp -o tests && ./tests`
+`cd` to this directory and run `g++ -std=c++14 extras/test/tests.cpp -o tests && ./tests`
 
 -------------------------
 
