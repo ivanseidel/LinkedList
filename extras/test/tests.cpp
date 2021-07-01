@@ -1,6 +1,6 @@
 //g++ -std=c++14 tests.cpp -o tests && ./tests
 
-#include "LinkedList.h"
+#include "../../LinkedList.h"
 #include <assert.h> 
 #include <iostream>
 
