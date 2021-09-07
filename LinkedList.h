@@ -92,6 +92,13 @@ public:
 	virtual T get(int index);
 
 	/*
+		Get last element of the list;
+		Return Element if accessible,
+		else, return false;
+	*/
+	virtual T end();
+
+	/*
 		Clear the entire array
 	*/
 	virtual void clear();
@@ -414,6 +421,13 @@ ListNode<T>* LinkedList<T>::findEndOfSortedString(ListNode<T> *p, int (*cmp)(T &
 	}
 	
 	return p;
+}
+
+template<typename T>
+T LinkedList<T>::end(){
+	if(_size <= 0)
+		return T();
+	return last->data;
 }
 
 #endif
