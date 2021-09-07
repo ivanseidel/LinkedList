@@ -1,6 +1,6 @@
 {
     "name": "LinkedList",
-    "keywords": "pattern",
+    "keywords": "llist, linkedlist",
     "description": "A fully implemented LinkedList (int, float, objects, Lists or Wales) made to work with Arduino projects",
     "repository":
     {
@@ -9,6 +9,7 @@
     },
     "frameworks": "arduino",
     "platforms": "*",
+    "version": "1.3.2",
     "build": {
         "srcFilter": [
             "+<LinkedList.h>"
