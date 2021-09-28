@@ -14,6 +14,7 @@
 #define LinkedList_h
 
 #include <stddef.h>
+#include <iterator>
 
 template<class T>
 struct ListNode
@@ -101,10 +102,64 @@ public:
 	*/
 	virtual void sort(int (*cmp)(T &, T &));
 
+
 		// add support to array brakets [] operator
 	inline T& operator[](int index); 
 	inline T& operator[](size_t& i) { return this->get(i); }
   	inline const T& operator[](const size_t& i) const { return this->get(i); }
+
+	/*
+		ConstIterator class
+		provides immutable forward iterator for the list
+	*/
+	struct ConstIterator {
+	    using iterator_category = std::forward_iterator_tag;
+		using difference_type   = std::ptrdiff_t;
+		using value_type        = T;
+		using pointer           = T*;
+		using reference         = T&;
+
+		ConstIterator(ListNode<T> *ptr = nullptr) : m_ptr(ptr) {}
+
+		const reference operator*() const { return m_ptr->data; }
+		const pointer operator->() const { return &m_ptr->data; }
+
+		// Prefix increment
+		ConstIterator& operator++() { m_ptr=m_ptr->next; return *this; }
+
+		// Postfix increment
+		ConstIterator operator++(int) { Iterator tmp = *this; m_ptr=m_ptr->next; return tmp; }
+
+		friend bool operator== (const ConstIterator& a, const ConstIterator& b) { return a.m_ptr == b.m_ptr; };
+		friend bool operator!= (const ConstIterator& a, const ConstIterator& b) { return a.m_ptr != b.m_ptr; };
+
+		protected:
+			ListNode<T> *m_ptr;
+	};
+
+	/*
+		Iterator class
+		inherits from ConstIterator, provides mutable forward iterator for the list
+	*/
+	struct Iterator : public ConstIterator {
+	    using iterator_category = std::forward_iterator_tag;
+		using difference_type   = std::ptrdiff_t;
+		using value_type        = T;
+		using pointer           = T*;
+		using reference         = T&;
+
+		Iterator(ListNode<T> *ptr = nullptr) : ConstIterator(ptr) {}
+		Iterator(){}
+
+		reference operator*() { return this->m_ptr->data; }
+		pointer operator->() { return &this->m_ptr->data; }
+	};
+
+	// iterator methods
+	ConstIterator cbegin() const { return ConstIterator(root); }
+	ConstIterator cend() const { return ConstIterator(nullptr); }   // same as last->next for non-empty list
+	Iterator begin() { return Iterator(root); }
+	Iterator end() { return Iterator(nullptr); }                    // same as last->next for non-empty list
 
 };
 
