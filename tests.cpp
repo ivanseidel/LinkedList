@@ -301,6 +301,52 @@ void GivenThreeInList_WhenClearIsCalled_ThenListEmpty()
     assert(list.size() == 0);
 }
 
+// test head() method
+void GivenTwoInList_WhenHeadIsCalled_ThenReturnsData()
+{
+    //Arrange
+    LinkedList<int> list = LinkedList<int>();
+    list.add(0);
+    list.add(1);
+
+    //Assert
+    assert(list.head() == 0);
+}
+
+// test tail() method
+void GivenTwoInList_WhenTailIsCalled_ThenReturnsData()
+{
+    //Arrange
+    LinkedList<int> list = LinkedList<int>();
+    list.add(0);
+    list.add(1);
+
+    //Assert
+    assert(list.tail() == 1);
+}
+
+// test exist() method
+void GivenThreeNodesInList_WhenExistCalled_ReturnsVarious()
+{
+    //Arrange
+    LinkedList<int> list = LinkedList<int>();
+    //Act Assert
+    assert(list.exist(-1) == false);
+    assert(list.exist(0) == false);
+    assert(list.exist(1) == false);
+
+    list.add(1);
+    assert(list.exist(-1) == false);
+    assert(list.exist(0) == true);
+    assert(list.exist(1) == false);
+
+    list.add(2);
+    assert(list.exist(-1) == false);
+    assert(list.exist(0) == true);
+    assert(list.exist(1) == true);
+}
+
+
 int main()
 {
     GivenNothingInList_WhenSizeCalled_Returns0();
@@ -328,6 +374,9 @@ int main()
     GivenThreeNodesInList_WhenGetIsCalled_ThenReturnsData();
     GivenNothingInList_WhenClearIsCalled_ThenSizeUnchanged();
     GivenThreeInList_WhenClearIsCalled_ThenListEmpty();
+    GivenTwoInList_WhenHeadIsCalled_ThenReturnsData();
+    GivenTwoInList_WhenTailIsCalled_ThenReturnsData();
+    GivenThreeNodesInList_WhenExistCalled_ReturnsVarious();
 
     std::cout<< "Tests pass"<< std::endl;
 }
