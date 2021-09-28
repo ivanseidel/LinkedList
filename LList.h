@@ -14,9 +14,15 @@
     include it instead of <LinkedList.h> and use Class types - LList, LNode
 */
 
+#ifndef LList_h
+#define LList_h
+#include <iterator>
+
 namespace LL{ 
 #include <LinkedList.h>
 }
 
+
 template<typename T> using LNode = LL::ListNode<T>;
 template<typename T> using LList = LL::LinkedList<T>;
+#endif
