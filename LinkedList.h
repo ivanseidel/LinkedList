@@ -116,8 +116,8 @@ public:
 	    using iterator_category = std::forward_iterator_tag;
 		using difference_type   = std::ptrdiff_t;
 		using value_type        = T;
-		using pointer           = T*;
-		using reference         = T&;
+		using pointer           = const T*;
+		using reference         = const T&;
 
 		ConstIterator(ListNode<T> *ptr = nullptr) : m_ptr(ptr) {}
 
@@ -130,8 +130,12 @@ public:
 		// Postfix increment
 		ConstIterator operator++(int) { Iterator tmp = *this; m_ptr=m_ptr->next; return tmp; }
 
-		friend bool operator== (const ConstIterator& a, const ConstIterator& b) { return a.m_ptr == b.m_ptr; };
-		friend bool operator!= (const ConstIterator& a, const ConstIterator& b) { return a.m_ptr != b.m_ptr; };
+		bool operator== (const ConstIterator& a) const { return m_ptr == a.m_ptr; };
+		bool operator!= (const ConstIterator& a) const { return m_ptr != a.m_ptr; };
+		//friend bool operator== (const ConstIterator& a, const ConstIterator& b) { return a.m_ptr == b.m_ptr; };
+		//friend bool operator!= (const ConstIterator& a, const ConstIterator& b) { return a.m_ptr != b.m_ptr; };
+
+		friend LinkedList<T>;
 
 		protected:
 			ListNode<T> *m_ptr;
