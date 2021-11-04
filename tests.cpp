@@ -301,6 +301,52 @@ void GivenThreeInList_WhenClearIsCalled_ThenListEmpty()
     assert(list.size() == 0);
 }
 
+// test iterators
+void GivenEmptyList_WhenConstInteratorCalled_ThenCount0Elements()
+{
+    //Arrange
+    LinkedList<int> list = LinkedList<int>();
+
+    //Act - count all elements
+    int cnt = 0;
+    for(const auto i : list)   // const iterator
+        ++cnt;
+
+    //Assert - sum must be eq 3
+    assert(cnt == 0);
+}
+
+// test iterators
+void GivenThreeInList_WhenConstInteratorCalled_ThenCount3Elements()
+{
+    //Arrange
+    LinkedList<int> list = LinkedList<int>();
+    list.add(0);
+    list.add(1);
+    list.add(2);
+
+    //Act - sum all elements
+    int sum = 0;
+    for(const auto i : list)   // const iterator
+        sum+=i;
+
+    //Assert - sum must be eq 3
+    assert(sum == 3);
+
+    // Act - increment all elements by '1' inplace
+    for (auto& i : list)
+        ++i;
+
+    //Act - sum all new elements
+    sum = 0;
+    for(const auto& i : list)   // const iterator by reference
+        sum+=i;
+
+    //Assert - sum must be eq 6
+    assert(sum == 6);
+}
+
+
 int main()
 {
     GivenNothingInList_WhenSizeCalled_Returns0();
@@ -328,6 +374,8 @@ int main()
     GivenThreeNodesInList_WhenGetIsCalled_ThenReturnsData();
     GivenNothingInList_WhenClearIsCalled_ThenSizeUnchanged();
     GivenThreeInList_WhenClearIsCalled_ThenListEmpty();
+    GivenEmptyList_WhenConstInteratorCalled_ThenCount0Elements();
+    GivenThreeInList_WhenConstInteratorCalled_ThenCount3Elements();
 
     std::cout<< "Tests pass"<< std::endl;
 }
