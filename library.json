@@ -1,13 +1,13 @@
 {
     "name": "LinkedList",
-    "keywords": "pattern",
+    "keywords": "llist, linkedlist",
     "description": "A fully implemented LinkedList (int, float, objects, Lists or Wales) made to work with Arduino projects",
     "repository":
     {
         "type": "git",
         "url": "https://github.com/ivanseidel/LinkedList.git"
     },
-    "frameworks": "arduino",
+    "frameworks": "*",
     "platforms": "*",
     "build": {
         "srcFilter": [
