@@ -127,6 +127,16 @@ myList.clear();
 myList.sort(myComparator);
 ```
 
+#### Iterating through elements
+```c++
+
+// Iterate through list using rfor. INode iterable.
+for (int& myObject : myList)
+{
+    myObject += 1;
+}
+```
+
 ------------------------
 
 ## Library Reference
@@ -136,6 +146,18 @@ myList.sort(myComparator);
 - `T` `ListNode::data` - The object data
 
 - `ListNode<T>` `*next` - Pointer to the next Node
+
+### `INode` class
+
+- `INode(ListNode<T>* start)` - Constructor.
+
+- `bool` `INode<T>::operator!=(INode)` - Returns false when the current element being held is `NULL`.
+
+- `T&` `INode<T>::operator*()` - Returns the element being held by reference.
+
+- `void` `INode<T>::operator++()` - Sets the current element as the next element.
+
+- `~INode()` - Destructor.
 
 ### `LinkedList` class
 
@@ -162,6 +184,10 @@ myList.sort(myComparator);
 - `T` `LinkedList<T>::shift()` - Remove the FIRST element. Return the removed element.
 
 - `T` `LinkedList<T>::get(int index)` - Return the element at `index`.
+
+- `INode<T>` `LinkedList<T>::begin()` - Returns iterable that holds first element in list.
+
+- `INode<T>` `LinkedList<T>::end()` - Returns iterable that hold last element in list.
 
 - `void` `LinkedList<T>::clear()` - Removes all elements. Does not free pointer memory.
 
