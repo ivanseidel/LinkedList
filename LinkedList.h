@@ -21,9 +21,49 @@ struct ListNode {
 	ListNode<T> *next;
 };
 
-template <typename T>
-class LinkedList{
+//Ranged-based for loop support.
+template<class T>
+class INode
+{
+private:
+	ListNode<T>* current;
+public:
+	INode(ListNode<T>*);
+	bool operator!=(INode);
+	T& operator*();
+	void operator++();
+	~INode();
+};
 
+template<class T>
+INode<T>::INode(ListNode<T>* start)
+	: current(start)
+{
+}
+
+template<class T>
+bool INode<T>::operator!=(INode) {
+	return (current != nullptr);
+}
+
+template<class T>
+T& INode<T>::operator*() {
+	return current->data;
+}
+
+template<class T>
+void INode<T>::operator++() {
+	current = current->next;
+}
+
+template<class T>
+INode<T>::~INode() {
+
+}
+
+template <typename T>
+class LinkedList
+{
 protected:
 	int _size;
 	ListNode<T> *root;
@@ -98,6 +138,16 @@ public:
 		else, return false;
 	*/
 	virtual T get(int index);
+
+	/*
+		Ranged-based for loop support.
+	*/
+	INode<T> begin();
+
+	/*
+		Ranged-based for loop support.
+	*/
+	INode<T> end();
 
 	/*
 		Clear the entire array
@@ -341,7 +391,18 @@ T LinkedList<T>::get(int index) {
 }
 
 template<typename T>
-void LinkedList<T>::clear(){
+INode<T> LinkedList<T>::begin() {
+	if (!size()) return nullptr;
+	return INode<T>(root);
+}
+
+template<typename T>
+INode<T> LinkedList<T>::end() {
+	return INode<T>(last);
+}
+
+template<typename T>
+void LinkedList<T>::clear() {
 	while(size() > 0)
 		shift();
 }
