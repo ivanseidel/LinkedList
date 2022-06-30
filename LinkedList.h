@@ -121,14 +121,8 @@ public:
 // Initialize LinkedList with false values
 template<typename T>
 LinkedList<T>::LinkedList()
+	: root(NULL), last(NULL), _size(0), lastNodeGot(root), lastIndexGot(0), isCached(false)
 {
-	root=NULL;
-	last=NULL;
-	_size=0;
-
-	lastNodeGot = root;
-	lastIndexGot = 0;
-	isCached = false;
 }
 
 // Clear Nodes and free Memory
