@@ -44,6 +44,7 @@ protected:
 public:
 	LinkedList();
 	LinkedList(int sizeIndex, T _t); //initiate list size and default value
+	LinkedList(const LinkedList&) = delete; // copy constructor isn't supported
 	virtual ~LinkedList();
 
 	/*
@@ -104,8 +105,8 @@ public:
 		// add support to array brakets [] operator
 	inline T& operator[](int index); 
 	inline T& operator[](size_t& i) { return this->get(i); }
-  	inline const T& operator[](const size_t& i) const { return this->get(i); }
-
+	inline const T& operator[](const size_t& i) const { return this->get(i); }
+	LinkedList<T>& operator=(const LinkedList<T>& other) = delete; // copy operator isn't supported
 };
 
 // Initialize LinkedList with false values
